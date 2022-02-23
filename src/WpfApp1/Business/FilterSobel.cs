@@ -13,7 +13,7 @@ namespace WpfApp1.Business
             }
 
             Bitmap b = bitmap;
-            Bitmap bitmapfinal = bitmap;
+            Bitmap bitmapFinal = bitmap;
             int width = b.Width;
             int height = b.Height;
             int[,] gx = new int[,] { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } };
@@ -72,12 +72,12 @@ namespace WpfApp1.Business
                         }
                     }
                     if (new_rx * new_rx + new_ry * new_ry > limit || new_gx * new_gx + new_gy * new_gy > limit || new_bx * new_bx + new_by * new_by > limit)
-                        bitmapfinal.SetPixel(i, j, Color.Black);
+                        bitmapFinal.SetPixel(i, j, Color.Black);
                     else
-                        bitmapfinal.SetPixel(i, j, Color.Transparent);
+                        bitmapFinal.SetPixel(i, j, Color.Transparent);
                 }
             }
-            return bitmapfinal;
+            return bitmapFinal;
         }
     }
 }

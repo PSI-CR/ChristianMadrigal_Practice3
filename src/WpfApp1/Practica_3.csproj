@@ -99,7 +99,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Business\BitmapImageConverter.cs" />
-    <Compile Include="Business\FiltersApplicator.cs" />
+    <Compile Include="Business\FilterApplicator.cs" />
     <Compile Include="Business\GrayScaleImage.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -146,6 +146,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="refresh.icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

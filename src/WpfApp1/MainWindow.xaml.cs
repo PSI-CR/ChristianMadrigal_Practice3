@@ -5,7 +5,6 @@ using System.Drawing;
 using Microsoft.Win32;
 using WpfApp1.Business;
 using WpfApp1.Presentation;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace WpfApp1
     public partial class MainWindow : Window, IImageViewer
     {
 
-        private FiltersApplicator _filtersAplicator;
+        private FilterApplicator _filtersAplicator;
         string _filePath;
 
         int nTotalNumber = 0;
@@ -27,7 +26,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            _filtersAplicator = new FiltersApplicator(this);
+            _filtersAplicator = new FilterApplicator(this);
         }
 
 
@@ -96,9 +95,6 @@ namespace WpfApp1
                 MessageBox.Show("Please, load Image");
             }
         }
-
-
-
         private void OptionPrewitt(object sender, RoutedEventArgs e)                                               //Methodo Filter Prewitt
         {
             try
@@ -110,7 +106,6 @@ namespace WpfApp1
                 MessageBox.Show("No Image. Please Load Image.");
             }
         }
-
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
@@ -190,6 +185,17 @@ namespace WpfApp1
         private void Filters(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btn_Reset_Click(object sender, RoutedEventArgs e)
+        {
+            Image.FromFile(ImageFilenames[nCurrentItem]);
+            Uri fileUri = new Uri(ImageFilenames[nCurrentItem]);
+            TextBox1.Text = ImageFilenames[nCurrentItem];
+            _filePath = ImageFilenames[nCurrentItem];
+            ImageLoad.Source = new BitmapImage(fileUri);
+
+   
         }
     } 
 }

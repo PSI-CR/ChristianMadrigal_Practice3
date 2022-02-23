@@ -4,11 +4,11 @@ using WpfApp1.Presentation;
 
 namespace WpfApp1.Business
 {
-    public class FiltersApplicator
+    public class FilterApplicator
     {
         IImageViewer _imageViewer;
 
-        public FiltersApplicator(IImageViewer ImagViewer)
+        public FilterApplicator(IImageViewer ImagViewer)
         {
             _imageViewer = ImagViewer;
         }
@@ -17,7 +17,7 @@ namespace WpfApp1.Business
         {
             if(bitmap == null)
             {
-                throw new ArgumentNullException("No Image. Please load Image");
+                throw new ArgumentNullException("Image", "No Image. Please load Image");
             }
             var bitmapnew = GrayScaleImage.Grayscale(bitmap);
             _imageViewer.DisplayImage(bitmapnew);
@@ -27,7 +27,7 @@ namespace WpfApp1.Business
         {
             if(bitmap == null)
             {
-                throw new ArgumentNullException("No Image. Please load Image");
+                throw new ArgumentNullException("Image", "No Image. Please load Image");
             }
             var bitmapnew = FilterSobel.ApplicateFilterSobel(bitmap);
             _imageViewer.DisplayImage(bitmapnew);
@@ -37,7 +37,7 @@ namespace WpfApp1.Business
         {
             if(bitmap==null)
             {
-                throw new ArgumentNullException("No Image. Please load Image");
+                throw new ArgumentNullException("Image", "No Image. Please load Image");
             }
             var bitmapnew = FilterPrewitt.ApplicateFilterPrewitt(bitmap);
             _imageViewer.DisplayImage(bitmapnew);

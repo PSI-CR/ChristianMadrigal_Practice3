@@ -16,21 +16,21 @@ namespace WpfApp1.Business
             int width = bitmap.Width;
             int height = bitmap.Height;
 
-            int BitsPerPixel = Image.GetPixelFormatSize(bitmap.PixelFormat);
-            int OneColorBits = BitsPerPixel / 8;
+            int bitsPerPixel = Image.GetPixelFormatSize(bitmap.PixelFormat);
+            int oneColorBits = bitsPerPixel / 8;
 
-            BitmapData bmpData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
+            BitmapData bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
             int position;
             int[,] gx = new int[,] { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } };
             int[,] gy = new int[,] { { 1, 2, 1 }, { 0, 0, 0 }, { -1, -2, -1 } };
             byte Threshold = 128;
 
-            Bitmap dstBmp = new Bitmap(width, height, bitmap.PixelFormat);
-            BitmapData dstData = dstBmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, dstBmp.PixelFormat);
+            Bitmap dstBitmap = new Bitmap(width, height, bitmap.PixelFormat);
+            BitmapData dstData = dstBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, dstBitmap.PixelFormat);
 
             unsafe
             {
-                byte* ptr = (byte*)bmpData.Scan0.ToPointer();
+                byte* ptr = (byte*)bitmapData.Scan0.ToPointer();
                 byte* dst = (byte*)dstData.Scan0.ToPointer();
 
                 for (int i = 1; i < height - 1; i++)
@@ -45,12 +45,12 @@ namespace WpfApp1.Business
                             {
                                 int I = i + ii - 1;
                                 int J = j + jj - 1;
-                                byte Current = *(ptr + (I * width + J) * OneColorBits);
+                                byte Current = *(ptr + (I * width + J) * oneColorBits);
                                 NewX += gx[ii, jj] * Current;
                                 NewY += gy[ii, jj] * Current;
                             }
                         }
-                        position = ((i * width + j) * OneColorBits);
+                        position = ((i * width + j) * oneColorBits);
                         if (NewX * NewX + NewY * NewY > Threshold * Threshold)
                             dst[position] = dst[position + 1] = dst[position + 2] = 255;
                         else
@@ -58,12 +58,10 @@ namespace WpfApp1.Business
                     }
                 }
             }
-            bitmap.UnlockBits(bmpData);
-            dstBmp.UnlockBits(dstData);
+            bitmap.UnlockBits(bitmapData);
+            dstBitmap.UnlockBits(dstData);
 
-            return dstBmp;
-
+            return dstBitmap;
         }
-
     }
 }

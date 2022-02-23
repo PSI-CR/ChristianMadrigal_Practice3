@@ -14,7 +14,7 @@
             <ColumnDefinition Width="344*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="../Icons/background.jpg"/>
+            <ImageBrush ImageSource="Icons/background.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="100*"/>
@@ -62,13 +62,23 @@
         <TextBox x:Name="TextBox1" HorizontalAlignment="Left" Height="19" Margin="111,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="555" Grid.ColumnSpan="3"/>
         <Button x:Name="_ButtonNext" Content="" HorizontalAlignment="Left" Margin="2,81,0,0" Grid.Row="2" VerticalAlignment="Top" Width="113" Click="ButtonNext_Click" Height="35" BorderBrush="{x:Null}" Grid.ColumnSpan="1" Grid.Column="2">
             <Button.Background>
-                <ImageBrush ImageSource="../Icons/next.jpg" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="Icons/next.jpg" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
         <Button x:Name="ButtonBack" Content="" HorizontalAlignment="Left" Margin="198,81,0,0" Grid.Row="2" VerticalAlignment="Top" Width="118" Click="ButtonBack_Click" BorderBrush="{x:Null}" Height="36" Grid.ColumnSpan="1">
             <Button.Background>
-                <ImageBrush ImageSource="../Icons/back.jpg" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="Icons/back.jpg" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
+        <Button x:Name="btn_Reset" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="212,74,0,0" Grid.Row="2" VerticalAlignment="Top" Width="53" Height="48" Click="btn_Reset_Click" RenderTransformOrigin="1.797,3.096" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="refresh.png"/>
+            </Button.Background>
+        </Button>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="216,121,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Refresh" VerticalAlignment="Top" Width="46" Background="{x:Null}" Foreground="White">
+            <TextBox.BorderBrush>
+                <ImageBrush/>
+            </TextBox.BorderBrush>
+        </TextBox>
     </Grid>
 </Window>

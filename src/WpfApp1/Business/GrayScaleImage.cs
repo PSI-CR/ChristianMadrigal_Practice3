@@ -13,8 +13,8 @@ namespace WpfApp1.Business
             }
 
             int width = bitmap.Width, height = bitmap.Height;                                                                                        //Assign the variables for traversing the image
-            System.Drawing.Color actual, newC;
-            Bitmap final = bitmap.Clone(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), bitmap.PixelFormat);                                              
+            Color actual, newC;
+            Bitmap final = bitmap.Clone(new Rectangle(0, 0, bitmap.Width, bitmap.Height), bitmap.PixelFormat);                                              
 
             for (int x = 0; x < width; x++)                                                                                                          //Traversed by width                                                                                                 
             {
